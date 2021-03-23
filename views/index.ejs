@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <a class="navbar-brand" href="#">URL SHORTENER</a>
+    </nav>
+
+    <div class="container">
+        <form action="/shortUrls" method="POST" class="my-3">
+            <label class="mr-3" for="fullUrl">Full URL</label>
+            <input name="fullUrl" id="fullUrl" type="url" class="form-control col mr-2" placeholder="URL" required>
+            <button type="submit" class="btn btn-secondary mt-2">Shrink</button>
+
+        </form>
+
+        <table >
+            <thead>
+                <tr>
+                    <th>Full URL</th>
+                    <th> <p class="m-3"> Short URL</p></th>
+                    <th>Clicks count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% shortUrls.forEach(shortUrl => { %>
+                    <tr>
+                        <td>
+                            <a href="<%= shortUrl.fullURL%>"><%= shortUrl.fullURL%></a>
+                        </td>
+                        <td >
+                            <a class="m-3" href="<%= shortUrl.shortURL%>"><%= shortUrl.shortURL%></a>
+                        </td>
+                        <td><%= shortUrl.click%></td>
+                    </tr>
+                <%}) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
