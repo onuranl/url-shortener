@@ -8,7 +8,7 @@ const app = express();
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }));
 
-mongoose.connect('mongodb://localhost/urlShortener', {useNewUrlParser: true,  useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/urlShortener', {useNewUrlParser: true,  useUnifiedTopology: true});
 
 app.get('/', async (req, res) => {
     const shortUrls = await shortUrl.find()
